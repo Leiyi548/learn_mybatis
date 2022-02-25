@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入database.properties头文件-->
+    <!--配置mybatis多套运行环境-->
+    <environments default="development">
+        <environment id="development">
+            <!-- 配置事物管理,采用JDBC的事物管理 -->
+            <transactionManager type="JDBC"/>
+            <!--POLLED:mybatis自带的数据源,JNDI:基于tomcat的数据源-->
+            <dataSource type="POOLED">
+            <!-- 驱动-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://101.34.207.32:3306/mybatis?connectTimeout=20000"/> <property name="username" value="root"/>
+                <property name="password" value="huanghengliang2001"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--将mapper文件加入配置文件-->
+    <mappers>
+        <mapper resource="Mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>
