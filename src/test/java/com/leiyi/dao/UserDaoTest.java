@@ -14,7 +14,7 @@ import java.util.List;
 public class UserDaoTest {
 
     @Test
-    public void test(){
+    public void getUserList(){
         // 第一步,获得SqlSession对象
         SqlSession sqlSession = MybatisUtils.getSqlSession();
 
@@ -39,6 +39,42 @@ public class UserDaoTest {
         UserDao userDao = sqlSession.getMapper(UserDao.class);
         User user = userDao.getUserById(1);
         System.out.println(user);
+        sqlSession.close();
+    }
+
+    @Test
+    public void addUser(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        int res = userDao.addUser(new User(4,"hello","123456"));
+        if (res>0){
+            System.out.println("success");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void updateUserById(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        int res = userDao.updateUserById(new User(4,"奥特曼","66666"));
+        if (res>0){
+            System.out.println("success");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void dropUserById(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        int res = userDao.dropUserById(4);
+        if (res > 0 ){
+            System.out.println("success");
+        }
+        sqlSession.commit();
         sqlSession.close();
     }
 }

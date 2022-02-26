@@ -10,4 +10,17 @@
     <select id="getUserById" parameterType="int" resultType="com.leiyi.pojo.User">
         select  * from mybatis.user where id = #{id}
     </select>
+
+    <insert id="addUser" parameterType="com.leiyi.pojo.User">
+        insert  into mybatis.user(id,name,pwd)  values (#{id},#{name},#{pwd});
+    </insert>
+
+    <update id="updateUserById" parameterType="com.leiyi.pojo.User">
+        update mybatis.user set id = #{id},name = #{name},pwd=#{pwd} where id = #{id}
+    </update>
+
+    <delete id="dropUserById" parameterType="int">
+        delete from mybatis.user where id = #{id}
+    </delete>
+
 </mapper>
