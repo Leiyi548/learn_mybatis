@@ -6,7 +6,13 @@
     <!--引入database.properties头文件-->
     <!--配置mybatis多套运行环境-->
     <properties resource="db.properties"/>
+    <!--给实体类起别名-->
+    <typeAliases>
+        <typeAlias type="com.leiyi.pojo.User" alias="User"/>
+        <typeAlias type="com.leiyi.pojo.Device" alias="Device"/>
+    </typeAliases>
     <environments default="development">
+        <!--指定使用什么环境-->
         <environment id="development">
             <!-- 配置事物管理,采用JDBC的事物管理 -->
             <transactionManager type="JDBC"/>
