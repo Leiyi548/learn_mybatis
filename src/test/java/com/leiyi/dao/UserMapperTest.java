@@ -31,7 +31,6 @@ public class UserMapperTest {
     public void getUserById(){
         // 第一步,获得SqlSession对象
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-
         // 方式一: getMapper
         UserMapper userDao = sqlSession.getMapper(UserMapper.class);
         User user = userDao.getUserById(1);
