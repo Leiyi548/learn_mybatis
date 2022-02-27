@@ -8,7 +8,7 @@ import java.util.List;
  * @author Leiyi548
  * @date 2022/2/24 4:33 下午
  */
-public interface UserDao {
+public interface UserMapper {
     List<User> getUserList();
     User getUserById(int id);
     int addUser(User user);

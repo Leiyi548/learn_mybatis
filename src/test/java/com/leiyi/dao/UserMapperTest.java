@@ -11,21 +11,18 @@ import java.util.List;
  * @author Leiyi548
  * @date 2022/2/25 8:31 下午
  */
-public class UserDaoTest {
+public class UserMapperTest {
 
     @Test
     public void getUserList(){
         // 第一步,获得SqlSession对象
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-
-
         // 方式一: getMapper
-        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        UserMapper userDao = sqlSession.getMapper(UserMapper.class);
         List<User> userList = userDao.getUserList();
         for (User user : userList){
             System.out.println(user);
         }
-
         // 关闭SqlSession
         sqlSession.close();
     }
@@ -36,7 +33,7 @@ public class UserDaoTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
 
         // 方式一: getMapper
-        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        UserMapper userDao = sqlSession.getMapper(UserMapper.class);
         User user = userDao.getUserById(1);
         System.out.println(user);
         sqlSession.close();
@@ -45,7 +42,7 @@ public class UserDaoTest {
     @Test
     public void addUser(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        UserMapper userDao = sqlSession.getMapper(UserMapper.class);
         int res = userDao.addUser(new User(4,"hello","123456"));
         if (res>0){
             System.out.println("success");
@@ -57,7 +54,7 @@ public class UserDaoTest {
     @Test
     public void updateUserById(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        UserMapper userDao = sqlSession.getMapper(UserMapper.class);
         int res = userDao.updateUserById(new User(4,"奥特曼","66666"));
         if (res>0){
             System.out.println("success");
@@ -69,7 +66,7 @@ public class UserDaoTest {
     @Test
     public void dropUserById(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        UserMapper userDao = sqlSession.getMapper(UserMapper.class);
         int res = userDao.dropUserById(4);
         if (res > 0 ){
             System.out.println("success");
